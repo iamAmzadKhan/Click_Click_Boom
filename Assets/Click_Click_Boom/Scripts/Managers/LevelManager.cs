@@ -135,16 +135,12 @@ public class LevelManager : MonoBehaviour
         {
             AudioManager.Instance.PlayAudio("Match");
         }
-
-        if (PairTile.gameObject != null && SelectedTile.gameObject != null)
-        {
             Score++;
             Try++;
             if (Score >= levelCompleteNumber)
             {
                 Invoke("ShowLevelComplete", 1f);
             }
-        }
     }
 
     void DelayWrongPair()
