@@ -68,6 +68,10 @@ public class GridManager : MonoBehaviour
                 UniqueIndex++;
             }    
         }
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.SetLevelComplete((_Width * _Height) / 2);
+        }
     }
     void GenerateGrid()
     {

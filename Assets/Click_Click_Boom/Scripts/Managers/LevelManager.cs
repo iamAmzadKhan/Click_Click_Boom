@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     public int PairCount = 0;
     public int Score = 0;
     public int Try = 0;
-    public int levelCompleteNumbre = 0;
+    public int levelCompleteNumber = 0;
     private void Awake()
     {
         if (Instance == null)
@@ -45,11 +45,14 @@ public class LevelManager : MonoBehaviour
 
     public void SetLevelComplete(int levelcomplete)
     {
-        levelCompleteNumbre = levelcomplete;
+        levelCompleteNumber = levelcomplete;
     }
     void SelectRotateTile()
     {
-        
+        if(AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayAudio("Click");
+        }
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -128,12 +131,19 @@ public class LevelManager : MonoBehaviour
         {
             SelectedTile.SetActive(false);
         }
-        
-        Score++;
-        Try++;
-        if(Score >= levelCompleteNumbre)
+        if (AudioManager.Instance != null)
         {
-            Invoke("ShowLevelComplete", 1f);
+            AudioManager.Instance.PlayAudio("Match");
+        }
+
+        if (PairTile.gameObject != null && SelectedTile.gameObject != null)
+        {
+            Score++;
+            Try++;
+            if (Score >= levelCompleteNumber)
+            {
+                Invoke("ShowLevelComplete", 1f);
+            }
         }
     }
 
@@ -147,7 +157,10 @@ public class LevelManager : MonoBehaviour
         {
             SelectedTile.transform.rotation = Quaternion.Euler(new Vector3(180, 0, 0));
         }
-        
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayAudio("Fail");
+        }
         Try++;
     }
 
@@ -161,7 +174,8 @@ public class LevelManager : MonoBehaviour
         {
             GridManager.Instance.ClearGame();
         }
-        levelCompleteNumbre = 0;
+
+        levelCompleteNumber = 0;
         Score = 0;
         Try = 0;
         SelectedTile = null;
