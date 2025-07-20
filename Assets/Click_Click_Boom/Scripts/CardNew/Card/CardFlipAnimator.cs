@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardFlipAnimatorService : MonoBehaviour, IAnimatorService
+public class CardFlipAnimator : MonoBehaviour, IAnimatorService
 {
     private bool _isAnimating;
     public bool IsAnimating => _isAnimating;

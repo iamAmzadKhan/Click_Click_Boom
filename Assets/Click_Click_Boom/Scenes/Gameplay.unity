@@ -251,8 +251,8 @@ MonoBehaviour:
   audioSource: {fileID: 212685842}
   audioClips:
   - {fileID: 8300000, guid: 2df7082f36ce92e4dab0c02e53e2c1a5, type: 3}
-  - {fileID: 8300000, guid: bf867c0df743e934e909bb7972121160, type: 3}
-  - {fileID: 8300000, guid: c15801c13ca4385498e01e0779d25310, type: 3}
+  - {fileID: 8300000, guid: 9b752ca97e18fd648800b5c16f674bce, type: 3}
+  - {fileID: 8300000, guid: c82d3d3e39492df4185659ec4f5926e6, type: 3}
 --- !u!4 &212685844
 Transform:
   m_ObjectHideFlags: 0
@@ -1149,7 +1149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -960, y: -530, z: 0}
+  m_LocalPosition: {x: -960, y: -530, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1349,8 +1349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmLoop: {fileID: 8300000, guid: dcb5a7d7449828946867c3be85f6d571, type: 3}
   clickSound: {fileID: 8300000, guid: 2df7082f36ce92e4dab0c02e53e2c1a5, type: 3}
-  matchSound: {fileID: 8300000, guid: bf867c0df743e934e909bb7972121160, type: 3}
-  failSound: {fileID: 8300000, guid: c15801c13ca4385498e01e0779d25310, type: 3}
+  matchSound: {fileID: 8300000, guid: 9b752ca97e18fd648800b5c16f674bce, type: 3}
+  failSound: {fileID: 8300000, guid: c82d3d3e39492df4185659ec4f5926e6, type: 3}
 --- !u!4 &1756474522
 Transform:
   m_ObjectHideFlags: 0
@@ -1629,7 +1629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2056256102
 Transform:
   m_ObjectHideFlags: 0

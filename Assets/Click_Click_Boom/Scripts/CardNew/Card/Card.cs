@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
+using UnityEngine;
 
 public class Card : MonoBehaviour, IFlipService, IMatchService
 {
@@ -7,10 +8,20 @@ public class Card : MonoBehaviour, IFlipService, IMatchService
     public bool IsFaceUp { get; private set; }
     private bool _isMatched = false;
 
+    [SerializeField] private TMP_Text CardNumber;
     [SerializeField] private SpriteRenderer cardImage;
     [SerializeField] private Sprite faceSprite, backSprite;
-
+ 
     private IAnimatorService animatorService;
+    public void Init(string number)
+    {
+        CardId = number;
+        faceSprite = backSprite;
+        cardImage.sprite = backSprite;
+        animatorService = GetComponent<CardFlipAnimator>();
+        if (animatorService == null)
+            animatorService = gameObject.AddComponent<CardFlipAnimator>();
+    }
 
     public void Init(string cardId, Sprite face)
     {
@@ -18,9 +29,9 @@ public class Card : MonoBehaviour, IFlipService, IMatchService
         faceSprite = face;
         cardImage.sprite = backSprite;
 
-        animatorService = GetComponent<CardFlipAnimatorService>();
+        animatorService = GetComponent<CardFlipAnimator>();
         if (animatorService == null)
-            animatorService = gameObject.AddComponent<CardFlipAnimatorService>();
+            animatorService = gameObject.AddComponent<CardFlipAnimator>();
     }
 
     void OnMouseDown()
@@ -37,19 +48,12 @@ public class Card : MonoBehaviour, IFlipService, IMatchService
 
     public void Flip()
     {
-       
-        Debug.Log("Flipping card...");
         animatorService.AnimateFlip(transform, () => {
             IsFaceUp = !IsFaceUp;
             cardImage.sprite = IsFaceUp ? faceSprite : backSprite;
+            CardNumber.alpha = IsFaceUp ? 1.0f : 0.0f;
         }, null);
     }
 
     public void SetMatched(bool matched) => _isMatched = matched;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, GetComponent<Collider2D>().bounds.size);
-    }
 }

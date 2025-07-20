@@ -33,10 +33,12 @@ public class Card_Manager : MonoBehaviour
             _first.SetMatched(true); _second.SetMatched(true);
             Sound_Manager.Instance.PlayMatch();
             Game_Manager.Instance.ScoreService.AddPoint();
+            Game_Manager.Instance.ScoreService.AddTries();
             StartCoroutine(ClearCards());
         }
         else
         {
+            Game_Manager.Instance.ScoreService.AddTries();
             Sound_Manager.Instance.PlayFail();
             StartCoroutine(FlipBack());
         }
