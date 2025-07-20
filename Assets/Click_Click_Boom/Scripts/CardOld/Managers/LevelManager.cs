@@ -21,14 +21,12 @@ public class LevelManager : MonoBehaviour
             Instance = this;
         }
     }
-    // Start is called before the first frame update
     void Start()
     {
         timer = -1;
         PairCount = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(timer >= 0)
