@@ -14,7 +14,7 @@ public class LevelSelectionScreen : MonoBehaviour
 
     private void CreateLevelButtons()
     {
-        string[] levels = { "2x2", "2x3", "2x4", "2x5", "2x6", "3x2", "3x4", "4x3" };
+        string[] levels = { "2x2", "2x3", "2x4", "2x5", "2x6", "3x2", "3x4"};
 
         foreach (var level in levels)
         {
@@ -34,7 +34,7 @@ public class LevelSelectionScreen : MonoBehaviour
 
     private void OnLevelButtonClicked(int rows, int columns)
     {
-        MyUIManager.Instance.ShowScreen("Game");
+        UI_Manager.Instance.ShowScreen("Game");
         Deck_Manager.Instance.CreateDeck(rows, columns);
     }
 }

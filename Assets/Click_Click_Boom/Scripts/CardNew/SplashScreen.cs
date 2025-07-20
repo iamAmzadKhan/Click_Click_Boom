@@ -11,6 +11,6 @@ public class SplashScreen : MonoBehaviour
 
     void LoadMainMenu()
     {
-        MyUIManager.Instance.ShowScreen("MainMenu");
+        UI_Manager.Instance.ShowScreen("MainMenu");
     }
 }

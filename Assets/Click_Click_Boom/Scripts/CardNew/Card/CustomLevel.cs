@@ -9,6 +9,9 @@ public class CustomLevel : MonoBehaviour
 {
     public TMP_InputField m_Rows;
     public TMP_InputField m_Columns;
+
+    public Button m_PlayButton;
+
     public Toggle m_IsFloor;
     private bool _IsFloor;
     private int _Rows;
@@ -16,9 +19,22 @@ public class CustomLevel : MonoBehaviour
 
     private void Start()
     {
+        if(m_PlayButton != null)
+        {
+            m_PlayButton.onClick.AddListener(OnPlay);
+        }
+       
         SetLevel();
     }
 
+    private void OnPlay()
+    {
+       if(UI_Manager.Instance != null)
+       {
+            UI_Manager.Instance.ShowScreen("Game");
+       }
+       PlayGame();
+    }
     public void SetLevel()
     {
         if (string.IsNullOrEmpty(m_Rows.text))

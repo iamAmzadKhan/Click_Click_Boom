@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
@@ -24,6 +25,13 @@ public class Game_Manager : MonoBehaviour
 
     public void OnPairCleared()
     {
-        
+        if(ScoreService.CurrentScore >= ScoreService.LevelScore)
+        {
+            if (UI_Manager.Instance != null)
+            {
+                UI_Manager.Instance.ShowScreen("Complete");
+            }
+            ScoreService.SaveScore();
+        }
     }
 }

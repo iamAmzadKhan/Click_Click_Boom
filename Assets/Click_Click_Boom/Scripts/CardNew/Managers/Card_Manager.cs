@@ -8,9 +8,8 @@ public class Card_Manager : MonoBehaviour
     private Card _first, _second;
     private bool _accepting = true;
     public float delay = 1f;
-
     void Awake() => Instance = this;
-
+    
     public void OnCardSelected(Card c)
     {
         if (!_accepting) return;
@@ -50,7 +49,10 @@ public class Card_Manager : MonoBehaviour
         Destroy(_first.gameObject);
         Destroy(_second.gameObject);
         ResetState();
-        Game_Manager.Instance.OnPairCleared();
+        if (Game_Manager.Instance != null)
+        {
+            Game_Manager.Instance.OnPairCleared();
+        }
     }
 
     private IEnumerator FlipBack()

@@ -24,6 +24,7 @@ public class Deck_Manager : MonoBehaviour
     public int UniqueIndex = 0;
     public GameObject _InstantiatedTile;
 
+    public int levelCompleteScore = 0;
     private void Awake()
     {
         if (Instance != null)
@@ -50,6 +51,12 @@ public class Deck_Manager : MonoBehaviour
         if (total % 2 != 0) throw new Exception("Even number of cards needed");
 
         var pairs = total / 2;
+        if (Game_Manager.Instance != null)
+        {
+            Game_Manager.Instance.ScoreService.Reset();
+            Game_Manager.Instance.ScoreService.SetLevelScore(pairs);
+        }
+
         var faces = cardFaces.Take(pairs).ToList();
         var ids = faces.Select((f, i) => new { f, id = $"card_{i}" }).ToList();
 
@@ -77,6 +84,11 @@ public class Deck_Manager : MonoBehaviour
     {
         _Width = width;
         _Height = height;
+        if (Game_Manager.Instance != null)
+        {
+            Game_Manager.Instance.ScoreService.Reset();
+            Game_Manager.Instance.ScoreService.SetLevelScore(_Width * _Height / 2);
+        }
         _Floor = IsFloor;
         CheckValidInput();
         GenerateList();
