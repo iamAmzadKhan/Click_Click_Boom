@@ -72,6 +72,7 @@ public class Deck_Manager : MonoBehaviour
             var card = Instantiate(cardPrefab, new Vector3(transform.position.x - 5 + x, transform.position.y + 2.5f + y), Quaternion.identity, transform);
             card.Init(info.id, info.f);
         }
+        SetCameraPosition(columns, rows);
     }
 
     public void SetDeck(int rows, int columns)

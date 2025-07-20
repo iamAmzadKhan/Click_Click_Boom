@@ -12,7 +12,10 @@ public class Card_Manager : MonoBehaviour
     
     public void OnCardSelected(Card c)
     {
-        if (!_accepting) return;
+        if (!_accepting)
+        {
+            return;
+        }
         if (_first == null)
         {
             _first = c;
